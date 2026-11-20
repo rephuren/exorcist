@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "wraith"
+name = "exorcist"
 version = "0.1.0"
 description = "Стенд проверки LLM-приложения на инъекции, утечки и злоупотребление инструментами, с привязкой к OWASP LLM Top 10 и MITRE ATLAS"
 readme = "README.md"
@@ -16,10 +16,10 @@ dependencies = []
 dev = ["pytest", "ruff", "mypy"]
 
 [project.scripts]
-wraith = "wraith.__main__:main"
+exorcist = "exorcist.__main__:main"
 
 [tool.setuptools]
-packages = ["wraith"]
+packages = ["exorcist"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

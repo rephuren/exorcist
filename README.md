@@ -1,4 +1,4 @@
-# wraith
+# exorcist
 
 Стенд проверки LLM-приложения. Кладёт в системный промпт безвредные «канарейки» (выдуманный секрет и ключ), прогоняет 18 вариантов атак в 8 пробах и показывает, что приложение выдало или исполнило по чужому тексту. Каждая проба привязана к категории OWASP LLM Top 10 и технике MITRE ATLAS.
 
@@ -8,17 +8,17 @@
 
 ```bash
 pip install -e .
-wraith list
-wraith run mock:naive                 # учебная «наивная» цель: проваливает почти всё
-wraith run mock:hardened              # «укреплённая»: один заложенный изъян
-wraith run http://localhost:8000/v1/chat/completions --model my-model --repeat 5
-WRAITH_API_KEY=... wraith run https://api.example.com/v1/chat/completions --i-am-authorized
-wraith run "cmd:python3 my_bot.py" --format md -o report.md
-wraith diff before.json after.json    # регрессии между двумя прогонами
-wraith export-promptfoo -o promptfooconfig.yaml
+exorcist list
+exorcist run mock:naive                 # учебная «наивная» цель: проваливает почти всё
+exorcist run mock:hardened              # «укреплённая»: один заложенный изъян
+exorcist run http://localhost:8000/v1/chat/completions --model my-model --repeat 5
+EXORCIST_API_KEY=... exorcist run https://api.example.com/v1/chat/completions --i-am-authorized
+exorcist run "cmd:python3 my_bot.py" --format md -o report.md
+exorcist diff before.json after.json    # регрессии между двумя прогонами
+exorcist export-promptfoo -o promptfooconfig.yaml
 ```
 
-Код возврата: `0` ничего не сработало, `1` есть уязвимости (порог `--min-severity`), `2` ошибка или цель недоступна. Ключ API читается только из переменной окружения `WRAITH_API_KEY`, в аргументах командной строки его нет.
+Код возврата: `0` ничего не сработало, `1` есть уязвимости (порог `--min-severity`), `2` ошибка или цель недоступна. Ключ API читается только из переменной окружения `EXORCIST_API_KEY`, в аргументах командной строки его нет.
 
 ## Цели
 
