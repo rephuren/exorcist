@@ -11,7 +11,7 @@ from .targets import TargetError, make_target
 
 
 def main(argv: list[str] | None = None) -> int:
-    ap = argparse.ArgumentParser(prog="wraith", description="Проверка LLM-приложения на инъекции, утечки и злоупотребление инструментами.")
+    ap = argparse.ArgumentParser(prog="exorcist", description="Проверка LLM-приложения на инъекции, утечки и злоупотребление инструментами.")
     ap.add_argument("--version", action="version", version=__version__)
     sub = ap.add_subparsers(dest="cmd", required=True)
 

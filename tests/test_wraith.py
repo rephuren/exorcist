@@ -4,11 +4,11 @@ import threading
 
 import pytest
 
-from wraith import report
-from wraith.__main__ import main
-from wraith.probes import PROBES, Context, by_id
-from wraith.runner import diff, run
-from wraith.targets import CmdTarget, MockHardened, MockNaive, TargetError, is_local, make_target
+from exorcist import report
+from exorcist.__main__ import main
+from exorcist.probes import PROBES, Context, by_id
+from exorcist.runner import diff, run
+from exorcist.targets import CmdTarget, MockHardened, MockNaive, TargetError, is_local, make_target
 
 
 def hits(rep):
@@ -134,7 +134,7 @@ def test_http_target_against_a_real_local_server(monkeypatch):
     srv = http.server.HTTPServer(("127.0.0.1", 0), _Handler)
     threading.Thread(target=srv.serve_forever, daemon=True).start()
     try:
-        monkeypatch.setenv("WRAITH_API_KEY", "test-key-123")
+        monkeypatch.setenv("EXORCIST_API_KEY", "test-key-123")
         url = f"http://127.0.0.1:{srv.server_port}/v1/chat/completions"
         rep = run(make_target(url), PROBES)
         assert len(rep.vulnerable()) == 17
